@@ -75,6 +75,7 @@ void SolarSystem::onKeyboard(unsigned char key, int x, int y) {
 
 }
 
+//公转半径
 #define SUN_RADIUS 48.74
 #define MER_RADIUS  7.32
 #define VEN_RADIUS 18.15
@@ -86,6 +87,7 @@ void SolarSystem::onKeyboard(unsigned char key, int x, int y) {
 #define URA_RADIUS 25.56
 #define NEP_RADIUS 24.78
 
+//距太阳的距离
 #define MER_DIS    62.06
 #define VEN_DIS   115.56
 #define EAR_DIS   168.00
@@ -96,6 +98,7 @@ void SolarSystem::onKeyboard(unsigned char key, int x, int y) {
 #define URA_DIS   848.00
 #define NEP_DIS   949.10
 
+//运动速度
 #define MER_SPEED   87.0
 #define VEN_SPEED  225.0
 #define EAR_SPEED  365.0
@@ -106,10 +109,16 @@ void SolarSystem::onKeyboard(unsigned char key, int x, int y) {
 #define URA_SPEED 3066.4
 #define NEP_SPEED 6014.8
 
+//自转速度
 #define SELFROTATE 3
 
+
+//为了方便操作数组，定义一个设置多位数组的宏
+//sun太阳  mercury水星  venus金星 earth 地球  moon 月球  mars火星
+//jupiter木星  saturn土星  uranus天王星  neptune海王星
 enum STARS {Sun, Mercury, Venus, Earth, Moon,
     Mars, Jupiter, Saturn, Uranus, Neptune};
+
 
 // 对太阳系星球的参数进行调整用的宏
 #define SET_VALUE_3(name, value0, value1, value2) \

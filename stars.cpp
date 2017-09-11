@@ -30,11 +30,16 @@ Star::Star(GLfloat radius, GLfloat distance,
 
 void Star::drawStar() {
 
+//用于激活OpenGL中提供的各种功能，传入的参数cap是OpenGL内部的宏，提供诸如光源、雾化、抖动等效果
     glEnable(GL_LINE_SMOOTH);
-    glEnable(GL_BLEND);
 
+    glEnable(GL_BLEND);
     int n = 1440;
 
+
+
+//glPushMatrix()函数   保存当前的矩阵环境，否则出现莫名绘制错误
+//glPushMatirix()  将当前矩阵保存到堆栈栈顶（保存当前矩阵）
     glPushMatrix();
     {
         // 公转
@@ -42,13 +47,15 @@ void Star::drawStar() {
         // 如果是行星，且距离不为0，那么 且向原点平移一个半径
         // 这部分用于处理卫星
         if (parentStar != 0 && parentStar->distance > 0) {
-            //将绘制的图形沿 z 轴旋转 alpha
+            //将绘制的图形沿 z 轴旋转 alpha度
+	   //
             glRotatef(parentStar->alpha, 0, 0, 1);
             // x 轴方向上平移 distance , y,z 方向不变
+	    //表示当前图形沿(x,y)方向平移distance距离
             glTranslatef(parentStar->distance, 0.0, 0.0);
         }
-        // 绘制运行轨道
-        glBegin(GL_LINES);
+        // 绘制运行轨道   指定了图形的类型
+        glBegin(GL_LINES);//GL_LINES表示绘制以此画出的点及他们之间的连线、
         for(int i=0; i<n; ++i)
             glVertex2f(distance * cos(2 * PI * i / n),
                        distance * sin(2 * PI * i / n));
@@ -63,8 +70,11 @@ void Star::drawStar() {
 
         // 绘制行星颜色
         glColor3f(rgbaColor[0], rgbaColor[1], rgbaColor[2]);
-        glutSolidSphere(radius, 40, 32);
+        
+	//绘制球体，radius为半径，slices为经线条数，satcks为纬线条数
+	glutSolidSphere(radius, 40, 32)
     }
+
     glPopMatrix();
 
 }
