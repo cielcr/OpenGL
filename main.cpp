@@ -13,7 +13,7 @@
 #else
 #include <GL/glut.h>   //GL库
 #endif
-#include "solarsystem.hpp"   //太阳西系类头文件class 
+#include "solarsystem.hpp"   //太阳系类头文件class 
 
 #define WINDOW_X_POS 50
 #define WINDOW_Y_POS 50
